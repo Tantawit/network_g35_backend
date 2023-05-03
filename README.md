@@ -1,4 +1,4 @@
-# CU Freelance Chat
+# Socket Chat Server
 
 ## Stacks
 - golang
@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 - makefile
 
 ### Installing
-1. Clone the project from [CU Freelance Chat](https://github.com/2110336-2565-2/sec3-group15-cu-freelance-chat)
+1. Clone the project from this repository
 2. Import project
 3. Setup config
     1. Copy `app.example.yaml` in `app` and paste it in the same location then remove `.example` from its name.
