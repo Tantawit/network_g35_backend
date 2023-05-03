@@ -1,0 +1,4 @@
+redis-chat-session:
+  host: localhost:6379
+  password: ""
+  db: 5

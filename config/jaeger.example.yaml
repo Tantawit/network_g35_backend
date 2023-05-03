@@ -1,0 +1,4 @@
+jaeger:
+  host: http://localhost:14268
+  env: local
+  service-name: account

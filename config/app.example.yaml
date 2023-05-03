@@ -1,0 +1,9 @@
+app:
+  http-port: 3007
+  grpc-port: 3008
+  metric-port: 8080
+  debug: true
+  keep-alive-interval: 30
+
+service:
+  account: localhost:3001

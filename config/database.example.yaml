@@ -1,0 +1,6 @@
+cassandra:
+  hosts:
+    - localhost
+  username: cassandra
+  password: root
+  keyspace: cufreelance_chat_db

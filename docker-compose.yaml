@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  local-cassandra-node-1:
+    image: arm64v8/cassandra:4.1
+    container_name: local-cassandra-node-1
+    restart: unless-stopped
+    environment:
+      CASSANDRA_CLUSTER_NAME: cloud-comp
+      CASSANDRA_PASSWORD_SEEDER: "yes"
+      CASSANDRA_PASSWORD: root
+      CASSANDRA_SEEDS: local-cassandra-node-1,local-cassandra-node-2
+    volumes:
+      - cassandra-data-1:/var/lib/cassandra
+    networks:
+      - cassandra
+    ports:
+      - "9042:9042"
+
+  local-cassandra-node-2:
+    image: arm64v8/cassandra:4.1
+    container_name: local-cassandra-node-2
+    restart: unless-stopped
+    environment:
+      CASSANDRA_CLUSTER_NAME: cloud-comp
+      CASSANDRA_PASSWORD: root
+      CASSANDRA_SEEDS: local-cassandra-node-1,local-cassandra-node-2
+    volumes:
+      - cassandra-data-2:/var/lib/cassandra
+    networks:
+      - cassandra
+
+  rabbitmq-local:
+    image: rabbitmq:3.9.26-management-alpine
+    container_name: rabbitmq-local
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_log:/var/log/rabbitmq
+
+
+volumes:
+  cassandra-data-1:
+    driver: local
+  cassandra-data-2:
+    driver: local
+  rabbitmq_data:
+    driver: local
+  rabbitmq_log:
+    driver: local
+
+networks:
+  cassandra:
